@@ -10,7 +10,7 @@ export interface IRoute{
 }
 
 export enum RouteNames{
-    LOGIN='login/*',
+    LOGIN='login/',
     EVENT='/'
 }
 

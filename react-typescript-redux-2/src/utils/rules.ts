@@ -1,6 +1,6 @@
-export const rules={
-    required:(message:string)=>({
-        required:true,
-        message
-    })
-}
+export const rules = {
+  required: (message: string = "Required field") => ({
+    required: true,
+    message,
+  }),
+};

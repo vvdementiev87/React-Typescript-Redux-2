@@ -1,5 +1,5 @@
-import axios from "axios";
 import { AppDispatch } from "../..";
+import UserService from "../../../api/UserService";
 import { Iuser } from "../../../models/IUser";
 import {
   AuthActionsEnum,
@@ -31,7 +31,7 @@ export const AuthactionCreators = {
       try {
         dispatch(AuthactionCreators.setIsLoading(true));
         setTimeout(async () => {
-          const response = await axios.get<Iuser[]>("../users.json");
+          const response = await UserService.getUsers();
           const mockUser = response.data.find(
             (user) => user.username === username && user.password === password
           );

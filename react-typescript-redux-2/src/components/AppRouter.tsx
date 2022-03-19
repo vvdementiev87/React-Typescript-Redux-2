@@ -1,7 +1,7 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import { privateRoutes, publicRoutes } from "../router";
+import { privateRoutes, publicRoutes, RouteNames } from "../router";
 
 const AppRouter: React.FC = () => {
   const { isAuth } = useTypedSelector((state) => state.auth);
@@ -14,6 +14,7 @@ const AppRouter: React.FC = () => {
           key={route.path}
         />
       ))}
+      <Route path="*" element={<Navigate to={RouteNames.EVENT} />} />
     </Routes>
   ) : (
     <Routes>
@@ -24,6 +25,7 @@ const AppRouter: React.FC = () => {
           key={route.path}
         />
       ))}
+      <Route path="*" element={<Navigate to={RouteNames.LOGIN} />} />
     </Routes>
   );
 };

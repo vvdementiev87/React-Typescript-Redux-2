@@ -1,5 +1,5 @@
 import React from "react";
-import { Calendar } from "antd";
+import { Calendar, List } from "antd";
 import { IEvent } from "../models/IEvent";
 import { Moment } from "moment";
 import { formatDate } from "../utils/date";
@@ -15,11 +15,16 @@ const EventCalendar: React.FC<EventCalendarProps> = (props) => {
       (ev) => ev.date === formatedDate
     );
     return (
-      <div>
+      <List size="small" itemLayout="horizontal">
         {curretDayEvents.map((ev, index) => (
-          <div key={index}>{ev.description}</div>
+          <List.Item key={index}>
+            <List.Item.Meta
+              title={(index + 1).toString()}
+              description={ev.description}
+            />
+          </List.Item>
         ))}
-      </div>
+      </List>
     );
   }
   return <Calendar dateCellRender={dateCellRender} />;
